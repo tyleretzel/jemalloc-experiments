@@ -48,6 +48,10 @@ int main(int argc, char **argv) {
   for (auto it = begin(threads); it != end(threads); ++it) {
     it->join();
   }
+	// Cleanup any remaining memory
+	for (int i = 0; i < FLAGS_num_threads; i++) {
+		toFreeQueues[i]->freeIgnoreLifetime();	
+	}
   high_resolution_clock::time_point endTime = high_resolution_clock::now();
 
   duration<double> span = duration_cast<duration<double>>(endTime - beginTime);

@@ -29,6 +29,5 @@ void Mixer::run() {
 		}
 		producersRemaining_--;
   }
-	// TODO : need to cleanup remaining memory, but it's possible it will be
-	// added to our free queue at a later time
+	// Main loop will eventually cleanup memory
 }

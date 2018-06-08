@@ -1,5 +1,7 @@
 #include "Mixer.h"
 
+#include <jemalloc/jemalloc.h>
+
 Mixer::Mixer(vector<shared_ptr<Producer>> producers, int numProducers, int me,
              vector<shared_ptr<ToFreeQueue>> toFreeQueues)
     : producers_(producers), producersRemaining_(numProducers),
@@ -29,6 +31,8 @@ void Mixer::run() {
 		}
 		producersRemaining_--;
   }
+	// Flush thread cache to get more accurate stats
+	mallctl("thread.tcache.flush", NULL, NULL, NULL, 0);
 	// TODO : need to cleanup remaining memory, but it's possible it will be
 	// added to our free queue at a later time
 }

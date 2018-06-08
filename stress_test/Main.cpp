@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <gflags/gflags.h>
+#include <jemalloc/jemalloc.h>
 
 #include "Mixer.h"
 
@@ -52,4 +53,6 @@ int main(int argc, char **argv) {
 
   duration<double> span = duration_cast<duration<double>>(endTime - beginTime);
   std::cout << "Elapsed time: " << span.count() << std::endl;
+
+	malloc_stats_print(NULL, NULL, NULL);
 }

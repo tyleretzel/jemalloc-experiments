@@ -1,7 +1,7 @@
 #include "Producers.h"
 
 #include <iostream>
-#include <stdlib.h>
+#include <string.h>
 
 void *allocateAndUse(ThreadObject &myThread, size_t &memUsed, size_t sz) {
   void *ptr = myThread.allocate(sz);

@@ -11,7 +11,6 @@
 
 #include "SizeConstants.h"
 
-using std::make_unique;
 using std::shared_ptr;
 using std::unique_ptr;
 using std::vector;
@@ -125,8 +124,6 @@ void Mixer::addProducer() {
       p = new SimpleProducer(sizeClass.size, FLAGS_producer_scale_param);
     }
   }
-
-  assert(p != nullptr);
 
   this->registerProducer(weight, std::move(std::unique_ptr<Producer>(p)));
 }

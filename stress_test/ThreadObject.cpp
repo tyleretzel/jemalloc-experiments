@@ -46,7 +46,6 @@ void *ThreadObject::allocate(size_t sz) {
     return nullptr;
   } else {
     this->allocSoFar_ += sz;
-    assert(sz > 0);
     void *r = malloc(sz);
     if (r == nullptr) {
       std::cout << "malloc failed." << std::endl;

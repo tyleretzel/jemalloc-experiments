@@ -219,8 +219,8 @@ void Mixer::run() {
 
     burnInstCache(kMaxInstCacheSize);
   }
-  if (je_mallctl("thread.tcache.flush", NULL, NULL, NULL, 0)) {
-    std::cout << "je_mallctl failed. Exiting..." << std::endl;
+  if (mallctl("thread.tcache.flush", NULL, NULL, NULL, 0)) {
+    std::cout << "mallctl failed. Exiting..." << std::endl;
   }
   // Main loop will cleanup memory after all threads are done
 }

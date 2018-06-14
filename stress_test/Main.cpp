@@ -67,10 +67,10 @@ int main(int argc, char **argv) {
   double time = run();
 
   if (FLAGS_print_malloc_stats) {
-    if (je_mallctl("thread.tcache.flush", NULL, NULL, NULL, 0)) {
-      std::cout << "je_mallctl failed. Exiting..." << std::endl;
+    if (mallctl("thread.tcache.flush", NULL, NULL, NULL, 0)) {
+      std::cout << "mallctl failed. Exiting..." << std::endl;
     }
-    je_malloc_stats_print(NULL, NULL, NULL);
+    malloc_stats_print(NULL, NULL, NULL);
   }
 
   std::cout << "Elapsed time: " << time << std::endl;
